@@ -19,7 +19,7 @@ class ListaEnlazada{
 
     public:
     ListaEnlazada();
-    void AgregarEstudiante(string nombre, float NotaFinal);
+    void AgregarEstudiante(void);
     float MostrarPromedio(void);
     void MostrarEstudiante(void);
 
@@ -29,17 +29,42 @@ ListaEnlazada::ListaEnlazada(){
     head = nullptr;
 }
 
-void ListaEnlazada::AgregarEstudiante(string nombre, float NotaFinal){
+void ListaEnlazada::AgregarEstudiante(void){
     nodo* nuevo = new nodo();
-    nuevo -> dato.nombre = nombre;
-    nuevo -> dato.NotaFinal = NotaFinal;
+   
+    cout << "Nombre del Estudiante: ";
+    cin.ignore();
+    getline(cin, nuevo -> dato.nombre);
+    cout << "Nota Final: ";
+    cin >> nuevo -> dato.NotaFinal;
+
     nuevo -> sig = head;
     head = nuevo;
 
-    cout << "Nombre del Estudiante: ";
-    cin >> nombre;
-    cin.ignore();
-    cout << "Nota Final: ";
-    cin >> NotaFinal;
+}
 
+int main() {
+    ListaEnlazada lista;
+    int opcion;
+
+    do {
+        cout << "1. Agregar estudiante" << endl
+            << "2. Listas de estudiantes" << endl
+            << "3. Promedio de notas" << endl
+            << "4. Salir" << endl;
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            lista.AgregarEstudiante();
+            break;
+        case 2:
+            lista.MostrarEstudiante();
+            break;
+        case 3:
+            lista.MostrarPromedio();
+            break;
+        }
+    } while (opcion != 4);
+    return 0;
 }
