@@ -43,6 +43,17 @@ void ListaEnlazada::AgregarEstudiante(void){
 
 }
 
+void ListaEnlazada::MostrarEstudiante(void){
+
+    nodo* actual = head;
+
+    while(actual != nullptr)
+    {
+        cout << "Nombre: "<< actual->dato.nombre<< endl;
+        actual = actual->sig;
+    }
+}
+
 int main() {
     ListaEnlazada lista;
     int opcion;
@@ -61,9 +72,9 @@ int main() {
         case 2:
             lista.MostrarEstudiante();
             break;
-        case 3:
-            lista.MostrarPromedio();
-            break;
+        // case 3:
+        //     lista.MostrarPromedio();
+        //     break;
         }
     } while (opcion != 4);
     return 0;
